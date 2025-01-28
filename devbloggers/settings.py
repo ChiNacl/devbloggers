@@ -54,7 +54,7 @@ ROOT_URLCONF = 'devbloggers.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'devbloggers.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'devbloggersdb',
+        'USER': 'postgres',
+        'PASSWORD': 'maria',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
@@ -105,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lagos'
 
 USE_I18N = True
 
@@ -115,7 +119,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# set a file path to the static folder
 STATIC_URL = 'static/'
+
+# for Django to know about the static folder
+STATICFILES_DIRS = [BASE_DIR / 'static'] 
+
+STATIC_ROOT = BASE_DIR / 'static'
+
+# simply the name of the folder where the uploaded files that are connected to the model are saved
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# when someone is trying to access an image, where can they go and do that? 
+# It is simply the url path to access the uploaded files.
+MEDIA_URL = '/media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
