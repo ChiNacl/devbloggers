@@ -18,10 +18,14 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a class="active" href="{% url 'index' %}">home</a></li>
-                                    <li><a href="service.html">login/register</a></li>
+                                    {% if not user.is_authenticated %}
+                                    <li><a href="{% url 'account_login' %}">login</a></li>
+                                    <li><a href="{% url 'account_signup' %}">register</a></li>
+                                    {% else %}
                                     <li><a href="Portfolio.html">Profile</a></li>
                                     <li><a href="#">Messages</a></li>
-
+                                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                                    {% endif %}
                                     <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             <li><a href="{% url 'blogs' %}">blogs</a></li>

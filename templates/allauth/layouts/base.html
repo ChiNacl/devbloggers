@@ -1,0 +1,186 @@
+{% load i18n %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DEV BLOGGERS</title>
+        {% block extra_head %}
+        {% endblock extra_head %}
+
+        {% comment %} added code for tryouts {% endcomment %}
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- <link rel="manifest" href="site.webmanifest"> -->
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="{% static 'styles/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/gijgo.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/slicknav.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/css/style.css' %}">
+        <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+        <style>
+            div.form-block a {
+                text-decoration: none;
+                color: #007bff;
+            }
+            div.form-block a:hover {
+                text-decoration: underline;
+                color: #007bff;
+            }
+            form ul {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        {% include "navbar.html" %}
+
+        <!-- bradcam_area  -->
+        <div class="bradcam_area bradcam_bg_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text">
+                            <h3>{% block head_title %}
+                                {% endblock head_title %}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /bradcam_area  -->
+        <div class="col-md-6 offset-md-3 my-5 form-block">
+            {% block body %}
+                {% if messages %}
+                <div>
+                    <strong>{% trans "Messages:" %}</strong>
+                    <ul>
+                        {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <div>
+                    <strong>{% trans "Menu:" %}</strong>
+                    <ul>
+                        {% if user.is_authenticated %}
+                            {% url 'account_email' as email_url_ %}
+                            {% if email_url_ %}
+                                <li>
+                                    <a href="{{ email_url_ }}">{% trans "Change Email" %}</a>
+                                </li>
+                            {% endif %}
+                            {% url 'account_change_password' as change_password_url_ %}
+                            {% if change_password_url_ %}
+                                <li>
+                                    <a href="{{ change_password_url_ }}">{% trans "Change Password" %}</a>
+                                </li>
+                            {% endif %}
+                            {% url 'socialaccount_connections' as connections_url_ %}
+                            {% if connections_url_ %}
+                                <li>
+                                    <a href="{{ connections_url_ }}">{% trans "Account Connections" %}</a>
+                                </li>
+                            {% endif %}
+                            {% url 'mfa_index' as mfa_url_ %}
+                            {% if mfa_url_ %}
+                                <li>
+                                    <a href="{{ mfa_url_ }}">{% trans "Two-Factor Authentication" %}</a>
+                                </li>
+                            {% endif %}
+                            {% url 'usersessions_list' as usersessions_list_url_ %}
+                            {% if usersessions_list_url_ %}
+                                <li>
+                                    <a href="{{ usersessions_list_url_ }}">{% trans "Sessions" %}</a>
+                                </li>
+                            {% endif %}
+                            {% url 'account_logout' as logout_url_ %}
+                            {% if logout_url_ %}
+                                <li>
+                                    <a href="{{ logout_url_ }}">{% trans "Sign Out" %}</a>
+                                </li>
+                            {% endif %}
+                        {% else %}
+                            {% url 'account_login' as login_url_ %}
+                            {% if login_url_ %}
+                                <li>
+                                    <a href="{{ login_url_ }}">{% trans "Sign In" %}</a>
+                                </li>
+                            {% endif %}
+                            {% url 'account_signup' as signup_url_ %}
+                            {% if signup_url_ %}
+                                <li>
+                                    <a href="{{ signup_url_ }}">{% trans "Sign Up" %}</a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                </div>
+            
+                {% block content %}
+                {% endblock content %}
+            {% endblock body %}
+
+            {% block extra_body %}
+            {% endblock extra_body %}
+        </div>
+            
+        {% include "footer.html" %}
+
+        <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/ajax-form.js' %}"></script>
+        <script src="{% static 'js/waypoints.min.js' %}"></script>
+        <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/scrollIt.js' %}"></script>
+        <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <script src="{% static 'js/nice-select.min.js' %}"></script>
+        <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/gijgo.min.js' %}"></script>
+
+        <!--contact js-->
+        <script src="{% static 'js/contact.js' %}"></script>
+        <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'js/jquery.form.js' %}"></script>
+        <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'js/mail-script.js' %}"></script>
+
+        <script src="{% static 'js/main.js' %}"></script>
+
+        <script>
+            document.querySelectorAll('input').forEach((inputElement) => {
+                inputElement.classList.add('form-control');
+                if (inputElement.name === 'remember') {
+                    inputElement.classList.remove('form-control');
+                }
+            });
+            document.querySelectorAll('label').forEach((labelElement) => {
+                labelElement.style.fontSize = '18px';
+                labelElement.classList.add('text-dark');
+            });
+            document.querySelector('button').classList.add('btn', 'btn-success');
+        </script>
+    </body>
+</html>

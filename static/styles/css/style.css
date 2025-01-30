@@ -985,6 +985,13 @@ h3 {
   }
 }
 
+@media (min-width: 1200px) and (max-width: 1500px) {
+  /* line 57, ../../Arafath/CL/December/233. Startup/HTML/scss/_header.scss */
+  .header-area .main-header-area .main-menu ul li a:hover {
+    color: #615CFD !important;
+  }
+}
+
 /* line 75, ../../Arafath/CL/December/233. Startup/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li a i {
   font-size: 9px;
