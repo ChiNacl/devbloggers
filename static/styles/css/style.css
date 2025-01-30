@@ -1231,7 +1231,7 @@ h3 {
 .slider_area .single_slider .slider_text span {
   font-size: 30px;
   font-weight: 400;
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
   position: relative;
   z-index: 1;
 }
@@ -1242,7 +1242,7 @@ h3 {
   background: #fff;
   width: 50px;
   height: 2px;
-  content: '';
+  content: none;
   left: -67px;
   top: 50%;
   margin-bottom: -1px;
