@@ -43,6 +43,16 @@
             form ul {
                 color: red;
             }
+            .auth-menu {
+                font-size: 1.1rem;
+            }
+            .menu {
+                font-size: 1.2rem;
+                text-decoration: underline;
+            }
+            #id_password_helptext {
+                padding-top: 30px;
+            }
         </style>
     </head>
     <body>
@@ -74,8 +84,9 @@
                 </div>
                 {% endif %}
 
-                <div>
-                    <strong>{% trans "Menu:" %}</strong>
+                <div class="auth-menu">
+                    <strong class="menu">{% trans "Menu:" %}</strong>
+                    
                     <ul>
                         {% if user.is_authenticated %}
                             {% url 'account_email' as email_url_ %}
@@ -130,7 +141,7 @@
                         {% endif %}
                     </ul>
                 </div>
-            
+                <hr>
                 {% block content %}
                 {% endblock content %}
             {% endblock body %}
@@ -175,12 +186,27 @@
                 if (inputElement.name === 'remember') {
                     inputElement.classList.remove('form-control');
                 }
+                if (inputElement.id === 'email_radio_0') {
+                    inputElement.classList.remove('form-control');
+                }
             });
             document.querySelectorAll('label').forEach((labelElement) => {
                 labelElement.style.fontSize = '18px';
                 labelElement.classList.add('text-dark');
             });
-            document.querySelector('button').classList.add('btn', 'btn-success');
+            document.querySelectorAll('button').forEach((buttonElement) => {
+                buttonElement.classList.add('btn', 'btn-success', 'mr-3', 'mt-2');
+                if (buttonElement.name === 'action_remove') {
+                    buttonElement.classList.replace('btn-success', 'btn-danger');
+                }
+                if (buttonElement.innerText === 'Sign Out') {
+                    buttonElement.classList.replace('btn-success', 'btn-danger');
+                }
+            });
+            document.querySelectorAll('h1, h2').forEach((headerElement) => {
+                headerElement.classList.add('my-4');
+            });
+            
         </script>
     </body>
 </html>
