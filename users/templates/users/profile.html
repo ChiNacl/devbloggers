@@ -1,0 +1,88 @@
+{% extends "base.html" %} 
+
+{% load static %}
+
+{% block content %}
+
+<!-- portfolio_details_banner_start  -->
+<div class="portfolio_details_banner">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="details_info ">
+                    <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">Colorlib Mobile App</h3>
+                    <div class="details_links d-flex justify-content-between align-items-center">
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <span>Client</span>
+                            <h4>Mesica Chouhan</h4>
+                        </div>
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+                            <span>Category</span>
+                            <h4>Mobile App</h4>
+                        </div>
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                            <span>Project Date</span>
+                            <h4>Oct 12, 2019</h4>
+                        </div>
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                            <span>Share Project</span>
+                            <div class="social_links">
+                                <ul>
+                                    <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                                    <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
+                                    <li><a href="#"> <i class="fa fa-pinterest-p"></i> </a></li>
+                                    <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single_details wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
+                            <div class="project_btn">
+                                <a href="#" class="boxed-btn3">Project Link</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- portfolio_details_banner_end  -->
+
+<div class="portfolio_details_wrap">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="banner wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
+                    <img src="{% static 'images/img/portfolio_details/details_banner.png' %}" alt="">
+                </div>
+                <div class="details_text">
+                    <div class="row">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <p>A wonderful serenity has taken to the possession of my entire soul network infrastructure, including consolidation of established network designed and created infrastructure. Voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <p>A wonderful serenity has taken to the possession of my entire soul network infrastructure, including consolidation of established network designed and created infrastructure.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumbs">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single_thumb wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
+                                <img src="{% static 'images/img/portfolio_details/1.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single_thumb wow fadeInRight" data-wow-duration="1s" data-wow-delay=".4s">
+                                <img src="{% static 'images/img/portfolio_details/2.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
