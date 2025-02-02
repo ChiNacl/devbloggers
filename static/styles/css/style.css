@@ -3673,7 +3673,7 @@ h3 {
   font-weight: 400;
   color: #fff;
   text-align: center;
-  margin-bottom: 62px;
+  margin-bottom: 15px;
 }
 
 @media (max-width: 767px) {
@@ -6937,6 +6937,6 @@ h6 {
   font-family: 'AR CENA';
 }
 
-#devname {
+#devname, .bio {
   color: #615CFD;
 }

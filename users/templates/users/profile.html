@@ -10,37 +10,72 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="details_info ">
-                    <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">Colorlib Mobile App</h3>
+                    <div class="text-center">
+                        <img src="{{ user.profile.profile_image.url }}" width="200" height="200" class="rounded-circle" alt="user profile picture">
+                    </div>
+                    <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">{{ user.profile.official_name }}</h3>
+                    {% if user.profile.bio %}
+                    <div class="text-center bio mt-3 mb-5">
+                        {{ user.profile.bio }}
+                    </div>
+                    {% endif %}
                     <div class="details_links d-flex justify-content-between align-items-center">
+                        {% if user.profile.dev_name %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                            <span>Client</span>
-                            <h4>Mesica Chouhan</h4>
+                            <span>Dev name</span>
+                            <h4>{{ user.profile.dev_name }}</h4>
                         </div>
+                        {% endif %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
-                            <span>Category</span>
-                            <h4>Mobile App</h4>
+                            <span>Email</span>
+                            <h4>{{ user.profile.email }}</h4>
                         </div>
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-                            <span>Project Date</span>
-                            <h4>Oct 12, 2019</h4>
+                            <span>Gender</span>
+                            <h4>{{ user.profile.gender }}</h4>
                         </div>
+                        {% if user.profile.location %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
-                            <span>Share Project</span>
+                            <span>Location</span>
+                            <h4>{{ user.profile.location }}</h4>
+                        </div>
+                        {% endif %}
+                        {% if user.profile.social_set %}
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
+                            <span>Social media links</span>
                             <div class="social_links">
                                 <ul>
-                                    <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                    <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
-                                    <li><a href="#"> <i class="fa fa-pinterest-p"></i> </a></li>
-                                    <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
+                                    {% for social in user.profile.social_set.all %}
+                                        {% if social.github_url %}
+                                        <li><a href="#"> <i class="fa fa-github"></i> </a></li>
+                                        {% endif %}
+                                        {% if social.linkedin_url %}
+                                        <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li> 
+                                        {% endif %}
+                                        {% if social.facebook_url %}
+                                        <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                                        {% endif %}
+                                        {% if social.instagram_url %}
+                                        <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
+                                        {% endif %}
+                                        {% if social.youtube_url %}
+                                        <li><a href="#"> <i class="fa fa-youtube"></i> </a></li>
+                                        {% endif %}
+                                        {% if social.x_url %}
+                                        <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
+                                        {% endif %}
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
+                        {% endif %}
+                        {% if user.profile.occupation %}
                         <div class="single_details wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
-                            <div class="project_btn">
-                                <a href="#" class="boxed-btn3">Project Link</a>
+                            <div>
+                                <p class="boxed-btn3">{{ user.profile.occupation }}</p>
                             </div>
                         </div>
-
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -54,7 +89,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="banner wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
-                    <img src="{% static 'images/img/portfolio_details/details_banner.png' %}" alt="">
+                    <p>check</p>
+                    {% comment %} <img src="{% static 'images/img/portfolio_details/details_banner.png' %}" alt=""> {% endcomment %}
                 </div>
                 <div class="details_text">
                     <div class="row">
@@ -70,12 +106,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="single_thumb wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
-                                <img src="{% static 'images/img/portfolio_details/1.png' %}" alt="">
+                                <p>check</p>
+                                {% comment %} <img src="{% static 'images/img/portfolio_details/1.png' %}" alt=""> {% endcomment %}
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="single_thumb wow fadeInRight" data-wow-duration="1s" data-wow-delay=".4s">
-                                <img src="{% static 'images/img/portfolio_details/2.png' %}" alt="">
+                                <p>check</p>
+                                {% comment %} <img src="{% static 'images/img/portfolio_details/2.png' %}" alt=""> {% endcomment %}
                             </div>
                         </div>
                     </div>

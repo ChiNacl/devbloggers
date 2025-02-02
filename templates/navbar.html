@@ -22,7 +22,7 @@
                                     <li><a href="{% url 'account_login' %}">login</a></li>
                                     <li><a href="{% url 'account_signup' %}">register</a></li>
                                     {% else %}
-                                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                                    <li><a href="{% url 'profile' user.profile.id %}">Profile</a></li>
                                     <li><a href="#">Messages</a></li>
                                     <li><a href="{% url 'account_logout' %}">Logout</a></li>
                                     {% endif %}
@@ -38,9 +38,11 @@
                         </div>
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
+                        {% if user.is_authenticated %}
                         <div class="log_chat_area d-flex align-items-end">
-                            <a href="#" data-scroll-nav="0" class="say_hi">Say Hello</a>
+                            <span href="#" data-scroll-nav="0" class="say_hi">Logged in as {{ user.username }}</span>
                         </div>
+                        {% endif %}
                     </div>
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
