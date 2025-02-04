@@ -27,6 +27,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('blogs/', include('blogs.urls')),
     path('users/', include('users.urls')),
+    path('signup-redirect/', views.signup_redirect_view, name='signup_redirect'),
 
 ]
 
