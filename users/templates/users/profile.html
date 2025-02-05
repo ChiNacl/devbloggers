@@ -43,11 +43,6 @@
                             <span>Location</span>
                             <h4>{{ user.profile.location }}</h4>
                         </div>
-                        {% else %}
-                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
-                            <span>Location</span>
-                            <h4>Earth</h4>
-                        </div>
                         {% endif %}
                         {% if user.profile.social_set %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
@@ -97,35 +92,78 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="banner wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
-                    <p>check</p>
-                    {% comment %} <img src="{% static 'images/img/portfolio_details/details_banner.png' %}" alt=""> {% endcomment %}
-                </div>
+                {% comment %} <div class="banner wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
+                    <img src="{% static 'images/img/portfolio_details/details_banner.png' %}" alt="">
+                </div> {% endcomment %}
                 <div class="details_text">
                     <div class="row">
                         <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                            <p>A wonderful serenity has taken to the possession of my entire soul network infrastructure, including consolidation of established network designed and created infrastructure. Voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                            <div class="card border-success bg-transparent" style="width: 22rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-light">Stack</h5>
+                                    {% if user.profile.stack.all %}
+                                        {% for stack in user.profile.stack.all %}
+                                        <p class="card-text">{{ stack }}</p>
+                                        {% endfor %}
+                                    {% else %}
+                                    <p class="card-text">None</p>
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                            <p>A wonderful serenity has taken to the possession of my entire soul network infrastructure, including consolidation of established network designed and created infrastructure.</p>
+                            <div class="card float-right border-success bg-transparent" style="width: 22rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-light">Currently Learning</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="thumbs">
+                {% comment %} <div class="thumbs">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="single_thumb wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
                                 <p>check</p>
-                                {% comment %} <img src="{% static 'images/img/portfolio_details/1.png' %}" alt=""> {% endcomment %}
+                                <img src="{% static 'images/img/portfolio_details/1.png' %}" alt="">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="single_thumb wow fadeInRight" data-wow-duration="1s" data-wow-delay=".4s">
                                 <p>check</p>
-                                {% comment %} <img src="{% static 'images/img/portfolio_details/2.png' %}" alt=""> {% endcomment %}
+                                <img src="{% static 'images/img/portfolio_details/2.png' %}" alt="">
                             </div>
                         </div>
                     </div>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-light py-5 px-5 text-center">
+    <form>
+        <div class="form-row">
+            <div class="col-md-6 offset-3">
+                <textarea class="form-control" placeholder="What did you do today?" rows="3"></textarea>
+            </div>
+        </div>
+    </form>
+   
+    <h2 class="text-dark my-5">Daily Activities Posted So Far</h2>
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <div class="card border-success mb-3">
+                <div class="card-header bg-transparent border-success">
+                    <img src="{{ user.profile.profile_image.url}}" width="20" height="20" alt="">
+                    @{{ user.profile.dev_name }}
+                </div>
+                <div class="card-body text-success">
+                    <h5 class="card-title">What did you do today?</h5>
+                    <p class="card-text">I learnt about js functions today</p>
+                </div>
+                <div class="card-footer bg-transparent border-success"><a href="#" class="float-left">comments <i class="fa-regular fa-comment"></i></a>
+                <span class="float-right">Posted February 5, 2025</span>
                 </div>
             </div>
         </div>

@@ -3656,7 +3656,7 @@ h3 {
 /* line 1, ../../Arafath/CL/December/233. Startup/HTML/scss/_portfolio_details.scss */
 .portfolio_details_banner {
   background: #1F1F1F;
-  padding-top: 220px;
+  padding-top: 150px;
   padding-bottom: 470px;
 }
 
@@ -3743,7 +3743,7 @@ h3 {
 
 /* line 67, ../../Arafath/CL/December/233. Startup/HTML/scss/_portfolio_details.scss */
 .portfolio_details_wrap {
-  padding-bottom: 130px;
+  padding-bottom: 20px;
   position: relative;
   margin-top: -380px;
 }
@@ -3770,7 +3770,7 @@ h3 {
 /* line 82, ../../Arafath/CL/December/233. Startup/HTML/scss/_portfolio_details.scss */
 .portfolio_details_wrap .details_text {
   margin-bottom: 70px;
-  margin-top: 80px;
+  margin-top: 0px;
 }
 
 @media (max-width: 767px) {
