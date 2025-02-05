@@ -1151,7 +1151,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/233. Startup/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-image: url(../../images/img/banner/banner.png);
+  background-image: url(../../images/img/banner/banner4.jpg);
 }
 
 /* line 4, ../../Arafath/CL/December/233. Startup/HTML/scss/_slider.scss */
@@ -2645,8 +2645,8 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/233. Startup/HTML/scss/_service.scss */
 .service_area {
-  padding-top: 155px;
-  padding-bottom: 130px;
+  padding-top: 55px;
+  padding-bottom: 10px;
 }
 
 @media (max-width: 767px) {
@@ -3478,6 +3478,8 @@ h3 {
 /* line 1, ../../Arafath/CL/December/233. Startup/HTML/scss/_work.scss */
 .how_we_work_area {
   position: relative;
+  margin-top: 120px;
+  margin-bottom: 120px;
 }
 
 /* line 3, ../../Arafath/CL/December/233. Startup/HTML/scss/_work.scss */
@@ -3526,7 +3528,7 @@ h3 {
   right: 0;
   top: 0;
   height: 100%;
-  background-image: url(../../images/img/work/work.png);
+  background-image: url(../../images/img/banner/banner3.jpg);
   background-size: cover;
   background-position: center center;
   -webkit-border-radius: 20px 0 0 20px;
@@ -6937,6 +6939,10 @@ h6 {
   font-family: 'AR CENA';
 }
 
-#devname, .bio {
+.bio {
   color: #615CFD;
+}
+
+#devname {
+  font-family: 'Aldrich';
 }

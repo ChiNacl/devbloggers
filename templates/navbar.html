@@ -8,8 +8,8 @@
                 <div class="row align-items-center no-gutters">
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo-img">
-                            <a href="index.html">
-                                <img src="{% static 'images/img/logo.png' %}" alt="">
+                            <a href="{% url 'index' %}">
+                                <img src="{% static 'images/img/devlogo4.png' %}" width="150" height="70" alt="">
                             </a>
                         </div>
                     </div>
@@ -26,8 +26,9 @@
                                     <li><a href="#">Messages</a></li>
                                     <li><a href="{% url 'account_logout' %}">Logout</a></li>
                                     {% endif %}
-                                    <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                    <li><a href="#">common room <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
+                                            <li><a href="{% url 'blogs' %}">daily activities</a></li>
                                             <li><a href="{% url 'blogs' %}">blogs</a></li>
                                             <li><a href="{% url 'rooms' %}">rooms</a></li>
                                         </ul>

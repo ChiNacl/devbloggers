@@ -17,9 +17,10 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=100, default="Bar")
     bio = models.TextField(null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    location = models.CharField(max_length=300, null=True, blank=True, default="Earth Sea")
-    occupation = models.CharField(max_length=300, null=True, blank=True)
+    location = models.CharField(max_length=255, null=True, blank=True, default="Earth Sea")
+    occupation = models.CharField(max_length=255, null=True, blank=True)
     stack = models.ManyToManyField('Stack', blank=True)
+    currently_learning = models.CharField(max_length=255, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 

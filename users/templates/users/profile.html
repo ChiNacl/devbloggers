@@ -115,7 +115,11 @@
                             <div class="card float-right border-success bg-transparent" style="width: 22rem;">
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Currently Learning</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    {% if user.profile.currently_learning %}
+                                    <p class="card-text">{{ user.profile.currently_learning }}</p>
+                                    {% else %}
+                                    <p class="card-text">nothing</p>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -145,25 +149,29 @@
     <form>
         <div class="form-row">
             <div class="col-md-6 offset-3">
-                <textarea class="form-control" placeholder="What did you do today?" rows="3"></textarea>
+                <textarea class="form-control border-dark" 
+                placeholder="What did you do today? Hint: (keep it short. If it needs to be very long and descriptive, then you can go to the blog section and write a blog about it instead)" 
+                rows="3"></textarea>
             </div>
         </div>
+        <button type="submit" class="btn btn-success mt-3">Post</button>
     </form>
    
     <h2 class="text-dark my-5">Daily Activities Posted So Far</h2>
     <div class="row">
-        <div class="col-md-8 offset-2">
-            <div class="card border-success mb-3">
-                <div class="card-header bg-transparent border-success">
-                    <img src="{{ user.profile.profile_image.url}}" width="20" height="20" alt="">
+        <div class="col-md-8 offset-2 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+            <div class="card border-none mb-3">
+                <div class="card-header bg-secondary border-dark">
+                    <img src="{{ user.profile.profile_image.url}}" width="20" height="20" alt="">  
                     @{{ user.profile.dev_name }}
                 </div>
-                <div class="card-body text-success">
+                <div class="card-body bg-light text-dark">
                     <h5 class="card-title">What did you do today?</h5>
-                    <p class="card-text">I learnt about js functions today</p>
+                    <p class="card-text text-dark">I learnt about js functions today</p>
                 </div>
-                <div class="card-footer bg-transparent border-success"><a href="#" class="float-left">comments <i class="fa-regular fa-comment"></i></a>
-                <span class="float-right">Posted February 5, 2025</span>
+                <div class="card-footer bg-dark border-dark text-light">
+                    <a href="#" class="float-left text-light">comments <i class="fa-regular fa-comment"></i></a>
+                    <span class="float-right">Posted Wednesday, February 5, 2025 at 4:15pm</span>
                 </div>
             </div>
         </div>
