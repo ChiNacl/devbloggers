@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', views.index, name='index'),
-    path('blogs/', include('blogs.urls')),
+    path('posts/', include('posts.urls')),
     path('users/', include('users.urls')),
     path('signup-redirect/', views.signup_redirect_view, name='signup_redirect'),
 

@@ -149,17 +149,50 @@
     <form>
         <div class="form-row">
             <div class="col-md-6 offset-3">
-                <textarea class="form-control border-dark" 
+                <textarea class="form-control border-secondary" 
                 placeholder="What did you do today? Hint: (keep it short. If it needs to be very long and descriptive, then you can go to the blog section and write a blog about it instead)" 
-                rows="3"></textarea>
+                rows="4"></textarea>
             </div>
         </div>
-        <button type="submit" class="btn btn-success mt-3">Post</button>
+        <button type="submit" class="btn btn-success mt-4">Post</button>
     </form>
    
     <h2 class="text-dark my-5">Daily Activities Posted So Far</h2>
     <div class="row">
         <div class="col-md-8 offset-2 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+            <article class="blog_item">
+                <div class="blog_details">
+                    <a class="d-inline-block" href="single-blog.html">
+                        <h2>
+                            What did you do today?
+                        </h2>
+                    </a>
+                    <p>
+                        That dominion stars lights dominion divide years
+                        for fourth have don't stars is that he earth it
+                        first without heaven in place seed it second
+                        morning saying.
+                    </p>
+                    <ul class="blog-info-link">
+                        <li>
+                            <a href="#"
+                                ><img src="{{ user.profile.profile_image.url}}" width="20" height="20" alt="">  
+                                @{{ user.profile.dev_name }}</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#"
+                                ><i class="fa fa-comments"></i> 03
+                                Comments</a
+                            >
+                        </li>
+                        <li class="float-right">
+                            <span>Wednesday, February 5, 2025 at 4:15pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
             <div class="card border-none mb-3">
                 <div class="card-header bg-secondary border-dark">
                     <img src="{{ user.profile.profile_image.url}}" width="20" height="20" alt="">  

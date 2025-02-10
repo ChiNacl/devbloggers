@@ -285,7 +285,7 @@ h3 {
 
 /* line 213, ../../Arafath/CL/December/233. Startup/HTML/scss/theme-default.scss */
 .section-padding {
-  padding-top: 120px;
+  padding-top: 50px;
   padding-bottom: 120px;
 }
 
@@ -2159,7 +2159,7 @@ h3 {
 
 /* line 7, ../../Arafath/CL/December/233. Startup/HTML/scss/_bradcam.scss */
 .breadcam_bg_3 {
-  background-image: url(../img/banner/bradcam_3.png);
+  background-image: url(../../images/img/banner/banner5.jpg);
 }
 
 /* line 10, ../../Arafath/CL/December/233. Startup/HTML/scss/_bradcam.scss */
@@ -5769,7 +5769,7 @@ h6 {
 /*============ blog_left_sidebar css ==============*/
 /* line 525, ../../Arafath/CL/December/233. Startup/HTML/scss/_blog.scss */
 .blog_item {
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 /* line 529, ../../Arafath/CL/December/233. Startup/HTML/scss/_blog.scss */
