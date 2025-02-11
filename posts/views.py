@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Activity
 
 # Create your views here.
 def blogs(request):
@@ -18,4 +19,11 @@ def room(request, pk):
 
 
 def daily_activities(request):
-    return render(request, 'posts/daily_activities.html')
+    if request.method == 'POST':
+        user_profile = request.user.profile
+        activity_post = request.POST['daily_activity']
+        Activity.objects.create(profile=user_profile, activity_post=activity_post)
+    
+    activities = Activity.objects.all()
+    context = {'activities': activities}
+    return render(request, 'posts/daily_activities.html', context)

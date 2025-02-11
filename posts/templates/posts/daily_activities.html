@@ -18,194 +18,61 @@
 <section class="blog_area section-padding">
     <h1 class="text-center mb-5">Able devs, What did we do today?</h1>
     <div class="col-md-6 offset-3 mb-5">
-        <textarea name="" id="" rows="4" class="form-control"></textarea>
-        <button class="btn btn-success mt-4 d-block mx-auto">Post</button>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-row">
+                <textarea class="form-control border-secondary" 
+                placeholder="What did you do today? Hint: (keep it short. If it needs to be very long and descriptive, then you can go to the blog section and write a blog about it instead)" 
+                rows="4"
+                name="daily_activity"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success mt-4 d-block mx-auto">Post</button>
+        </form>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="blog_left_sidebar">
+                    {% if activities %}
+                    {% for activity in activities %}
                     <article class="blog_item">
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>
+                            <a href="{% url 'profile' activity.profile.id %}">
+                                <img src="{{ activity.profile.profile_image.url}}" width="20" height="20" alt="">  
+                                {% if activity.profile.dev_name %}
+                                    @{{ activity.profile.dev_name }}
+                                {% else %}
+                                    @{{ activity.profile.user.username }}
+                                {% endif %}
+                            </a>
+                            <div class="text-center">
+                                <h2 class="d-inline-block" href="single-blog.html">
                                     What did you do today?
                                 </h2>
-                            </a>
-                            <p>
-                                That dominion stars lights dominion divide years
-                                for fourth have don't stars is that he earth it
-                                first without heaven in place seed it second
-                                morning saying.
+                            </div>
+                            <p class="text-dark">
+                                {{ activity.activity_post }}
                             </p>
                             <ul class="blog-info-link">
-                                <li>
-                                    <a href="#"
-                                        ><img src="{{ user.profile.profile_image.url}}" width="20" height="20" alt="">  
-                                        @{{ user.profile.dev_name }}</a
-                                    >
-                                </li>
                                 <li>
                                     <a href="#"
                                         ><i class="fa fa-comments"></i> 03
                                         Comments</a
                                     >
                                 </li>
-                                <li class="float-right">
-                                    <span>Wednesday, February 5, 2025 at 4:15pm</span>
+                                <li>
+                                    <span>Posted on {{ activity.created }}</span>
+                                </li>
+                                <li>
+                                    <span>Updated on {{ activity.updated }}</span>
                                 </li>
                             </ul>
                         </div>
                     </article>
-
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <a href="#" class="blog_item_date">
-                                <h3>15</h3>
-                                <p>Jan</p>
-                            </a>
-                        </div>
-
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>
-                                    Google inks pact for new 35-storey office
-                                </h2>
-                            </a>
-                            <p>
-                                That dominion stars lights dominion divide years
-                                for fourth have don't stars is that he earth it
-                                first without heaven in place seed it second
-                                morning saying.
-                            </p>
-                            <ul class="blog-info-link">
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-user"></i> Travel,
-                                        Lifestyle</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-comments"></i> 03
-                                        Comments</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <a href="#" class="blog_item_date">
-                                <h3>15</h3>
-                                <p>Jan</p>
-                            </a>
-                        </div>
-
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>
-                                    Google inks pact for new 35-storey office
-                                </h2>
-                            </a>
-                            <p>
-                                That dominion stars lights dominion divide years
-                                for fourth have don't stars is that he earth it
-                                first without heaven in place seed it second
-                                morning saying.
-                            </p>
-                            <ul class="blog-info-link">
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-user"></i> Travel,
-                                        Lifestyle</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-comments"></i> 03
-                                        Comments</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <a href="#" class="blog_item_date">
-                                <h3>15</h3>
-                                <p>Jan</p>
-                            </a>
-                        </div>
-
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>
-                                    Google inks pact for new 35-storey office
-                                </h2>
-                            </a>
-                            <p>
-                                That dominion stars lights dominion divide years
-                                for fourth have don't stars is that he earth it
-                                first without heaven in place seed it second
-                                morning saying.
-                            </p>
-                            <ul class="blog-info-link">
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-user"></i> Travel,
-                                        Lifestyle</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-comments"></i> 03
-                                        Comments</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <a href="#" class="blog_item_date">
-                                <h3>15</h3>
-                                <p>Jan</p>
-                            </a>
-                        </div>
-
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>
-                                    Google inks pact for new 35-storey office
-                                </h2>
-                            </a>
-                            <p>
-                                That dominion stars lights dominion divide years
-                                for fourth have don't stars is that he earth it
-                                first without heaven in place seed it second
-                                morning saying.
-                            </p>
-                            <ul class="blog-info-link">
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-user"></i> Travel,
-                                        Lifestyle</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-comments"></i> 03
-                                        Comments</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-                    </article>
-
+                    {% endfor %}
+                    {% else %}
+                    <h1>No activity posts to show</h1>
+                    {% endif %}
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
                             <li class="page-item">

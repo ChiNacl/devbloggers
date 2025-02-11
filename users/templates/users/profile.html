@@ -11,12 +11,12 @@
             <div class="col-lg-10">
                 <div class="details_info ">
                     <div class="text-center">
-                        <img src="{{ user.profile.profile_image.url }}" width="200" height="200" class="rounded-circle" alt="user profile picture">
+                        <img src="{{ user_profile.profile_image.url }}" width="200" height="200" class="rounded-circle" alt="user profile picture">
                     </div>
-                    <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">{{ user.profile.official_name }}</h3>
-                    {% if user.profile.bio %}
+                    <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">{{ user_profile.official_name }}</h3>
+                    {% if user_profile.bio %}
                     <div class="text-center mt-3 mb-5">
-                        <p class="bio">{{ user.profile.bio }}</p>
+                        <p class="bio">{{ user_profile.bio }}</p>
                     </div>
                     {% else %}
                     <div class="text-center mt-3 mb-5">
@@ -24,32 +24,32 @@
                     </div>
                     {% endif %}
                     <div class="details_links d-flex justify-content-between align-items-center">
-                        {% if user.profile.dev_name %}
+                        {% if user_profile.dev_name %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                             <span>Dev name</span>
-                            <h4>{{ user.profile.dev_name }}</h4>
+                            <h4>{{ user_profile.dev_name }}</h4>
                         </div>
                         {% endif %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
                             <span>Email</span>
-                            <h4>{{ user.profile.email }}</h4>
+                            <h4>{{ user_profile.email }}</h4>
                         </div>
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
                             <span>Gender</span>
-                            <h4>{{ user.profile.gender }}</h4>
+                            <h4>{{ user_profile.gender }}</h4>
                         </div>
-                        {% if user.profile.location %}
+                        {% if user_profile.location %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
                             <span>Location</span>
-                            <h4>{{ user.profile.location }}</h4>
+                            <h4>{{ user_profile.location }}</h4>
                         </div>
                         {% endif %}
-                        {% if user.profile.social_set %}
+                        {% if user_profile.social_set %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
                             <span>Social media links</span>
                             <div class="social_links">
                                 <ul>
-                                    {% for social in user.profile.social_set.all %}
+                                    {% for social in user_profile.social_set.all %}
                                         {% if social.github_url %}
                                         <li><a href="#"> <i class="fa fa-github"></i> </a></li>
                                         {% endif %}
@@ -73,10 +73,10 @@
                             </div>
                         </div>
                         {% endif %}
-                        {% if user.profile.occupation %}
+                        {% if user_profile.occupation %}
                         <div class="single_details wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
                             <div>
-                                <p class="boxed-btn3">{{ user.profile.occupation }}</p>
+                                <p class="boxed-btn3">{{ user_profile.occupation }}</p>
                             </div>
                         </div>
                         {% endif %}
@@ -101,8 +101,8 @@
                             <div class="card border-success bg-transparent" style="width: 22rem;">
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Stack</h5>
-                                    {% if user.profile.stack.all %}
-                                        {% for stack in user.profile.stack.all %}
+                                    {% if user_profile.stack.all %}
+                                        {% for stack in user_profile.stack.all %}
                                         <p class="card-text">{{ stack }}</p>
                                         {% endfor %}
                                     {% else %}
@@ -115,8 +115,8 @@
                             <div class="card float-right border-success bg-transparent" style="width: 22rem;">
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Currently Learning</h5>
-                                    {% if user.profile.currently_learning %}
-                                    <p class="card-text">{{ user.profile.currently_learning }}</p>
+                                    {% if user_profile.currently_learning %}
+                                    <p class="card-text">{{ user_profile.currently_learning }}</p>
                                     {% else %}
                                     <p class="card-text">nothing</p>
                                     {% endif %}
@@ -146,12 +146,13 @@
     </div>
 </div>
 <div class="bg-light py-5 px-5 text-center">
-    <form>
+    <form method="POST" action="">
         <div class="form-row">
             <div class="col-md-6 offset-3">
                 <textarea class="form-control border-secondary" 
                 placeholder="What did you do today? Hint: (keep it short. If it needs to be very long and descriptive, then you can go to the blog section and write a blog about it instead)" 
-                rows="4"></textarea>
+                rows="4"
+                name="daily_activity"></textarea>
             </div>
         </div>
         <button type="submit" class="btn btn-success mt-4">Post</button>
@@ -160,53 +161,46 @@
     <h2 class="text-dark my-5">Daily Activities Posted So Far</h2>
     <div class="row">
         <div class="col-md-8 offset-2 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-            <article class="blog_item">
-                <div class="blog_details">
-                    <a class="d-inline-block" href="single-blog.html">
-                        <h2>
-                            What did you do today?
-                        </h2>
-                    </a>
-                    <p>
-                        That dominion stars lights dominion divide years
-                        for fourth have don't stars is that he earth it
-                        first without heaven in place seed it second
-                        morning saying.
-                    </p>
-                    <ul class="blog-info-link">
-                        <li>
-                            <a href="#"
-                                ><img src="{{ user.profile.profile_image.url}}" width="20" height="20" alt="">  
-                                @{{ user.profile.dev_name }}</a
-                            >
-                        </li>
-                        <li>
-                            <a href="#"
-                                ><i class="fa fa-comments"></i> 03
-                                Comments</a
-                            >
-                        </li>
-                        <li class="float-right">
-                            <span>Wednesday, February 5, 2025 at 4:15pm</span>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-
-            <div class="card border-none mb-3">
-                <div class="card-header bg-secondary border-dark">
-                    <img src="{{ user.profile.profile_image.url}}" width="20" height="20" alt="">  
-                    @{{ user.profile.dev_name }}
-                </div>
-                <div class="card-body bg-light text-dark">
-                    <h5 class="card-title">What did you do today?</h5>
-                    <p class="card-text text-dark">I learnt about js functions today</p>
-                </div>
-                <div class="card-footer bg-dark border-dark text-light">
-                    <a href="#" class="float-left text-light">comments <i class="fa-regular fa-comment"></i></a>
-                    <span class="float-right">Posted Wednesday, February 5, 2025 at 4:15pm</span>
-                </div>
-            </div>
+            {% if profile_activities %}
+                {% for profile_activity in profile_activities %}
+                <article class="blog_item">
+                    <div class="blog_details">
+                        <span class="mb-3">
+                            <img src="{{ user_profile.profile_image.url }}" width="20" height="20" alt="">  
+                            {% if user_profile.dev_name %}
+                                @{{ user_profile.dev_name }}
+                            {% else %}
+                                @{{ user_profile.user.username }}
+                            {% endif %}
+                        </span>
+                        <div class="text-center">
+                            <h2 class="d-inline-block" href="single-blog.html">
+                                What did you do today?
+                            </h2>
+                        </div>
+                        <p class="text-dark">
+                            {{ profile_activity.activity_post }}
+                        </p>
+                        <ul class="blog-info-link">
+                            <li>
+                                <a href="#"
+                                    ><i class="fa fa-comments"></i> 03
+                                    Comments</a
+                                >
+                            </li>
+                            <li>
+                                <span>Posted on {{ profile_activity.created }}</span>
+                            </li>
+                            <li>
+                                <span>Updated on {{ profile_activity.updated }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+                {% endfor %}
+            {% else %}
+                <h1>No activity posts to show</h1>
+            {% endif %}
         </div>
     </div>
 </div>
