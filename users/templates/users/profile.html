@@ -15,14 +15,19 @@
                     </div>
                     <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">{{ user_profile.official_name }}</h3>
                     {% if user_profile.bio %}
-                    <div class="text-center mt-3 mb-5">
+                    <div class="text-center my-4">
                         <p class="bio">{{ user_profile.bio }}</p>
                     </div>
                     {% else %}
-                    <div class="text-center mt-3 mb-5">
+                    <div class="text-center my-4">
                         <p class="bio text-danger">A professional procrastinator</p>
                     </div>
                     {% endif %}
+
+                    {% if user.profile.id != user_profile.id %}
+                    <div class="text-center mb-5"><a class="btn btn-success">Message</a></div>
+                    {% endif %}
+                    
                     <div class="details_links d-flex justify-content-between align-items-center">
                         {% if user_profile.dev_name %}
                         <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
@@ -146,7 +151,7 @@
     </div>
 </div>
 <div class="bg-light py-5 px-5 text-center">
-    <form method="POST" action="">
+    <!-- <form method="POST" action="">
         <div class="form-row">
             <div class="col-md-6 offset-3">
                 <textarea class="form-control border-secondary" 
@@ -156,9 +161,9 @@
             </div>
         </div>
         <button type="submit" class="btn btn-success mt-4">Post</button>
-    </form>
+    </form> -->
    
-    <h2 class="text-dark my-5">Daily Activities Posted So Far</h2>
+    <h2 class="text-dark my-3">Daily Activities Posted So Far</h2>
     <div class="row">
         <div class="col-md-8 offset-2 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
             {% if profile_activities %}

@@ -28,6 +28,7 @@ urlpatterns = [
     path('posts/', include('posts.urls')),
     path('users/', include('users.urls')),
     path('signup-redirect/', views.signup_redirect_view, name='signup_redirect'),
+    path('login-redirect/', views.login_redirect_view, name='login_redirect'),
 
 ]
 
