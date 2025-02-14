@@ -1,1 +1,213 @@
-<h1>EDIT PROFILE</h1>
+{% extends "base.html" %} 
+
+{% load static %}
+
+{% block content %}
+
+<!-- portfolio_details_banner_start  -->
+<div class="portfolio_details_banner">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="details_info ">
+                    <div class="text-center">
+                        <img src="{{ user_profile.profile_image.url }}" width="200" height="200" class="rounded-circle" alt="user profile picture">
+                    </div>
+                    <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">{{ user_profile.official_name }}</h3>
+                    {% if user_profile.bio %}
+                    <div class="text-center my-4">
+                        <p class="bio">{{ user_profile.bio }}</p>
+                    </div>
+                    {% else %}
+                    <div class="text-center my-4">
+                        <p class="bio text-danger">A professional procrastinator</p>
+                    </div>
+                    {% endif %}
+
+                    {% if user.profile.id != user_profile.id %}
+                    <div class="text-center mb-5"><a class="btn btn-success">Message</a></div>
+                    {% endif %}
+                    
+                    <div class="details_links d-flex justify-content-between align-items-center">
+                        {% if user_profile.dev_name %}
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <span>Dev name</span>
+                            <h4>{{ user_profile.dev_name }}</h4>
+                        </div>
+                        {% endif %}
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+                            <span>Email</span>
+                            <h4>{{ user_profile.email }}</h4>
+                        </div>
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                            <span>Gender</span>
+                            <h4>{{ user_profile.gender }}</h4>
+                        </div>
+                        {% if user_profile.location %}
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                            <span>Location</span>
+                            <h4>{{ user_profile.location }}</h4>
+                        </div>
+                        {% endif %}
+                        {% if user_profile.social_set %}
+                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
+                            <span>Social media links</span>
+                            <div class="social_links">
+                                <ul>
+                                    {% for social in user_profile.social_set.all %}
+                                        {% if social.github_url %}
+                                        <li><a href="#"> <i class="fa fa-github"></i> </a></li>
+                                        {% endif %}
+                                        {% if social.linkedin_url %}
+                                        <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li> 
+                                        {% endif %}
+                                        {% if social.facebook_url %}
+                                        <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                                        {% endif %}
+                                        {% if social.instagram_url %}
+                                        <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
+                                        {% endif %}
+                                        {% if social.youtube_url %}
+                                        <li><a href="#"> <i class="fa fa-youtube"></i> </a></li>
+                                        {% endif %}
+                                        {% if social.x_url %}
+                                        <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if user_profile.occupation %}
+                        <div class="single_details wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
+                            <div>
+                                <p class="boxed-btn3">{{ user_profile.occupation }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- portfolio_details_banner_end  -->
+
+<div class="portfolio_details_wrap">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                {% comment %} <div class="banner wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
+                    <img src="{% static 'images/img/portfolio_details/details_banner.png' %}" alt="">
+                </div> {% endcomment %}
+                <div class="details_text">
+                    <div class="row">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <div class="card border-success bg-transparent" style="width: 22rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-light">Stack</h5>
+                                    {% if user_profile.stack.all %}
+                                        {% for stack in user_profile.stack.all %}
+                                        <p class="card-text">{{ stack }}</p>
+                                        {% endfor %}
+                                    {% else %}
+                                    <p class="card-text">None</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <div class="card float-right border-success bg-transparent" style="width: 22rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-light">Currently Learning</h5>
+                                    {% if user_profile.currently_learning %}
+                                    <p class="card-text">{{ user_profile.currently_learning }}</p>
+                                    {% else %}
+                                    <p class="card-text">nothing</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% comment %} <div class="thumbs">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single_thumb wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
+                                <p>check</p>
+                                <img src="{% static 'images/img/portfolio_details/1.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single_thumb wow fadeInRight" data-wow-duration="1s" data-wow-delay=".4s">
+                                <p>check</p>
+                                <img src="{% static 'images/img/portfolio_details/2.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-light py-5 px-5 text-center">
+    <!-- <form method="POST" action="">
+        <div class="form-row">
+            <div class="col-md-6 offset-3">
+                <textarea class="form-control border-secondary" 
+                placeholder="What did you do today? Hint: (keep it short. If it needs to be very long and descriptive, then you can go to the blog section and write a blog about it instead)" 
+                rows="4"
+                name="daily_activity"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success mt-4">Post</button>
+    </form> -->
+   
+    <h2 class="text-dark my-3">Daily Activities Posted So Far</h2>
+    <div class="row">
+        <div class="col-md-8 offset-2 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+            {% if profile_activities %}
+                {% for profile_activity in profile_activities %}
+                <article class="blog_item">
+                    <div class="blog_details">
+                        <span class="mb-3">
+                            <img src="{{ user_profile.profile_image.url }}" width="20" height="20" alt="">  
+                            {% if user_profile.dev_name %}
+                                @{{ user_profile.dev_name }}
+                            {% else %}
+                                @{{ user_profile.user.username }}
+                            {% endif %}
+                        </span>
+                        <div class="text-center">
+                            <h2 class="d-inline-block" href="single-blog.html">
+                                What did you do today?
+                            </h2>
+                        </div>
+                        <p class="text-dark">
+                            {{ profile_activity.activity_post }}
+                        </p>
+                        <ul class="blog-info-link">
+                            <li>
+                                <a href="#"
+                                    ><i class="fa fa-comments"></i> 03
+                                    Comments</a
+                                >
+                            </li>
+                            <li>
+                                <span>Posted on {{ profile_activity.created }}</span>
+                            </li>
+                            <li>
+                                <span>Updated on {{ profile_activity.updated }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+                {% endfor %}
+            {% else %}
+                <h1>No activity posts to show</h1>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
