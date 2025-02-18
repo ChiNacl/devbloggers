@@ -10,83 +10,54 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="details_info ">
-                    <div class="text-center">
-                        <input type="file" name="image_upload" accept="image/*">
-                        <img src="{{ user_profile.profile_image.url }}" width="200" height="200" class="rounded-circle" alt="user profile picture">
-                    </div>
-                    <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">{{ user_profile.official_name }}</h3>
-                    {% if user_profile.bio %}
-                    <div class="text-center my-4">
-                        <p class="bio">{{ user_profile.bio }}</p>
-                    </div>
-                    {% else %}
-                    <div class="text-center my-4">
-                        <p class="bio text-danger">A professional procrastinator</p>
-                    </div>
-                    {% endif %}
+                    <form method="POST">
+                        <div class="text-center mb-3">
+                            <img src="{{ user_profile.profile_image.url }}" width="200" height="200" class="rounded-circle" alt="user profile picture">
+                            <input type="file" class="text-light" name="image_upload" accept="image/*">
+                        </div>
+                        <div class="row">
+                            <span class="wow fadeInDown col-md-6" data-wow-duration="1s" data-wow-delay=".3s">{{ form.first_name}}</span>
+                            <span class="wow fadeInDown col-md-6" data-wow-duration="1s" data-wow-delay=".3s">{{ form.last_name}}</span>
+                        </div>
+                        <div class="text-center my-4">
+                            <p class="bio">{{ form.bio }}</p>
+                        </div>
+                        
+                        <div class="details_links d-flex justify-content-between align-items-center">
+                            <div class="single_details single_input wow fadeInUp mr-3" data-wow-duration="1s" data-wow-delay=".3s">
+                                <span>Dev name</span>
+                                <h4>{{ form.dev_name }}</h4>
+                            </div>
+                            <div class="single_details single_input wow fadeInUp mr-3" data-wow-duration="1s" data-wow-delay=".4s">
+                                <span>Email</span>
+                                <h4>{{ form.email }}</h4>
+                            </div>
+                            <div class="single_details single_input wow fadeInUp mr-3" data-wow-duration="1s" data-wow-delay=".5s">
+                                <span>Gender</span>
+                                <h4>{{ form.gender }}</h4>
+                            </div>
+                            <div class="single_details single_input wow fadeInUp mr-2" data-wow-duration="1s" data-wow-delay=".6s">
+                                <span>Location</span>
+                                <h4>{{ form.location }}</h4>
+                            </div>
+                            <div class="single_details single_input wow fadeInUp col-md-2" data-wow-duration="1s" data-wow-delay=".7s">
+                                <span>Social media links</span>
+                                <div class="social_links">
+                                    <ul>
+                                        {% for field in social_form %}
+                                        <li class="mb-2 mr-2">{{ field }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
+                                <span>Occupation</span>
+                                <h4>{{ form.occupation }}</h4>
+                            </div>
 
-                    {% if user.profile.id != user_profile.id %}
-                    <div class="text-center mb-5"><a class="btn btn-success">Message</a></div>
-                    {% endif %}
-                    
-                    <div class="details_links d-flex justify-content-between align-items-center">
-                        {% if user_profile.dev_name %}
-                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                            <span>Dev name</span>
-                            <h4>{{ user_profile.dev_name }}</h4>
                         </div>
-                        {% endif %}
-                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
-                            <span>Email</span>
-                            <h4>{{ user_profile.email }}</h4>
-                        </div>
-                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-                            <span>Gender</span>
-                            <h4>{{ user_profile.gender }}</h4>
-                        </div>
-                        {% if user_profile.location %}
-                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
-                            <span>Location</span>
-                            <h4>{{ user_profile.location }}</h4>
-                        </div>
-                        {% endif %}
-                        {% if user_profile.social_set %}
-                        <div class="single_details single_input wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
-                            <span>Social media links</span>
-                            <div class="social_links">
-                                <ul>
-                                    {% for social in user_profile.social_set.all %}
-                                        {% if social.github_url %}
-                                        <li><a href="#"> <i class="fa fa-github"></i> </a></li>
-                                        {% endif %}
-                                        {% if social.linkedin_url %}
-                                        <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li> 
-                                        {% endif %}
-                                        {% if social.facebook_url %}
-                                        <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                        {% endif %}
-                                        {% if social.instagram_url %}
-                                        <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                        {% endif %}
-                                        {% if social.youtube_url %}
-                                        <li><a href="#"> <i class="fa fa-youtube"></i> </a></li>
-                                        {% endif %}
-                                        {% if social.x_url %}
-                                        <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% if user_profile.occupation %}
-                        <div class="single_details wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
-                            <div>
-                                <p class="boxed-btn3">{{ user_profile.occupation }}</p>
-                            </div>
-                        </div>
-                        {% endif %}
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -107,13 +78,7 @@
                             <div class="card border-success bg-transparent" style="width: 22rem;">
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Stack</h5>
-                                    {% if user_profile.stack.all %}
-                                        {% for stack in user_profile.stack.all %}
-                                        <p class="card-text">{{ stack }}</p>
-                                        {% endfor %}
-                                    {% else %}
-                                    <p class="card-text">None</p>
-                                    {% endif %}
+                                    <p class="card-text">{{ form.stack }}</p>   
                                 </div>
                             </div>
                         </div>
@@ -121,11 +86,7 @@
                             <div class="card float-right border-success bg-transparent" style="width: 22rem;">
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Currently Learning</h5>
-                                    {% if user_profile.currently_learning %}
-                                    <p class="card-text">{{ user_profile.currently_learning }}</p>
-                                    {% else %}
-                                    <p class="card-text">nothing</p>
-                                    {% endif %}
+                                    <p class="card-text">{{ form.currently_learning }}</p>
                                 </div>
                             </div>
                         </div>

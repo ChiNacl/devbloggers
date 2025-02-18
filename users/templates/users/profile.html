@@ -12,7 +12,9 @@
                 <div class="details_info ">
                     <div class="text-center">
                         <img src="{{ user_profile.profile_image.url }}" width="200" height="200" class="rounded-circle offset-1" alt="user profile picture">
-                        <a class="btn btn-primary float-right sticky-top">Edit Profile</a>
+                        {% if user_profile.id == user.profile.id %}
+                        <a href="{% url 'edit-profile' user_profile.id %}" class="btn btn-primary float-right sticky-top">Edit Profile</a>
+                        {% endif %}
                     </div>
                     <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".3s">{{ user_profile.official_name }}</h3>
                     {% if user_profile.bio %}
