@@ -26,6 +26,7 @@ def edit_profile(request, pk):
         social_form = SocialForm()
 
     form = ProfileForm(instance=user_profile)
+
     context = {'user_profile': user_profile, 
                'profile_activities': profile_activities, 
                'form': form,

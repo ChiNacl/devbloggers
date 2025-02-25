@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Profile, Social, Stack
+from .models import Profile, Social
 
 class ProfileForm(ModelForm):
     class Meta:

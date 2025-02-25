@@ -111,7 +111,7 @@
                                     <h5 class="card-title text-light">Stack</h5>
                                     {% if user_profile.stack.all %}
                                         {% for stack in user_profile.stack.all %}
-                                        <p class="card-text">{{ stack }}</p>
+                                        <span class="card-text text-light badge badge-info mr-2 p-2">{{ stack }}</span>
                                         {% endfor %}
                                     {% else %}
                                     <p class="card-text">None</p>

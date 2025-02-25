@@ -78,7 +78,16 @@
                             <div class="card border-success bg-transparent" style="width: 22rem;">
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Stack</h5>
-                                    <p class="card-text">{{ form.stack }}</p>   
+                                    <div class="js-stack-container">
+                                        {% if user_profile.stack.all %}
+                                            {% for stack in user_profile.stack.all %}
+                                            <span class="card-text js-stac-{{stack.id}} badge badge-info mb-3 mr-2 p-2" data-stack-id="{{stack.id}}">{{ stack }}</span>
+                                            {% endfor %}
+                                        {% else %}
+                                        <p class="card-text">None</p>
+                                        {% endif %}
+                                    </div>  
+                                    <input type="text" class="form-control js-stack js-choice">
                                 </div>
                             </div>
                         </div>
