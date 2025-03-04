@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Stack
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm, SocialForm
 
@@ -16,8 +16,8 @@ def profile(request, pk):
 @login_required(login_url='account_login')
 def edit_profile(request, pk):
     user_profile = Profile.objects.get(id=pk)
-    profile_activities = user_profile.activity_set.all()
-    
+    stacks = Stack.objects.all()
+
     # user_social = Social.objects.get(profile=user_profile)
     
     if user_profile.social_set.all():
@@ -28,7 +28,7 @@ def edit_profile(request, pk):
     form = ProfileForm(instance=user_profile)
 
     context = {'user_profile': user_profile, 
-               'profile_activities': profile_activities, 
                'form': form,
+               'stacks': stacks,
                'social_form': social_form}
     return render(request, 'users/edit-profile.html', context)

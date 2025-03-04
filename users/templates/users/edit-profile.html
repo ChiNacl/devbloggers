@@ -79,15 +79,23 @@
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Stack</h5>
                                     <div class="js-stack-container">
+                                        {% if stacks %}
+                                        <p>All Stacks:</p>
+                                            {% for stack in stacks %}
+                                            <span class="card-text js-stacks badge badge-info mb-3 mr-2 p-2">{{ stack }}</span>
+                                            {% endfor %}
+                                        {% endif %}
                                         {% if user_profile.stack.all %}
+                                        <p>Your Stack:</p>
                                             {% for stack in user_profile.stack.all %}
-                                            <span class="card-text js-stac-{{stack.id}} badge badge-info mb-3 mr-2 p-2" data-stack-id="{{stack.id}}">{{ stack }}</span>
+                                            <span class="card-text js-stack js-stack-{{stack.id}} badge badge-info mb-3 mr-2 p-2" data-stack-id="{{stack.id}}">{{ stack }}</span>
                                             {% endfor %}
                                         {% else %}
                                         <p class="card-text">None</p>
                                         {% endif %}
                                     </div>  
-                                    <input type="text" class="form-control js-stack js-choice">
+                                    <select name="select-stack" class="js-choice" id="" multiple></select>
+                                    <!-- <input type="text" class="form-control js-stack js-choice"> -->
                                 </div>
                             </div>
                         </div>
@@ -101,82 +109,7 @@
                         </div>
                     </div>
                 </div>
-                {% comment %} <div class="thumbs">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single_thumb wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
-                                <p>check</p>
-                                <img src="{% static 'images/img/portfolio_details/1.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single_thumb wow fadeInRight" data-wow-duration="1s" data-wow-delay=".4s">
-                                <p>check</p>
-                                <img src="{% static 'images/img/portfolio_details/2.png' %}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div> {% endcomment %}
             </div>
-        </div>
-    </div>
-</div>
-<div class="bg-light py-5 px-5 text-center">
-    <!-- <form method="POST" action="">
-        <div class="form-row">
-            <div class="col-md-6 offset-3">
-                <textarea class="form-control border-secondary" 
-                placeholder="What did you do today? Hint: (keep it short. If it needs to be very long and descriptive, then you can go to the blog section and write a blog about it instead)" 
-                rows="4"
-                name="daily_activity"></textarea>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-success mt-4">Post</button>
-    </form> -->
-   
-    <h2 class="text-dark my-3">Daily Activities Posted So Far</h2>
-    <div class="row">
-        <div class="col-md-8 offset-2 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-            {% if profile_activities %}
-                {% for profile_activity in profile_activities %}
-                <article class="blog_item">
-                    <div class="blog_details">
-                        <span class="mb-3">
-                            <img src="{{ user_profile.profile_image.url }}" width="20" height="20" alt="">  
-                            {% if user_profile.dev_name %}
-                                @{{ user_profile.dev_name }}
-                            {% else %}
-                                @{{ user_profile.user.username }}
-                            {% endif %}
-                        </span>
-                        <div class="text-center">
-                            <h2 class="d-inline-block" href="single-blog.html">
-                                What did you do today?
-                            </h2>
-                        </div>
-                        <p class="text-dark">
-                            {{ profile_activity.activity_post }}
-                        </p>
-                        <ul class="blog-info-link">
-                            <li>
-                                <a href="#"
-                                    ><i class="fa fa-comments"></i> 03
-                                    Comments</a
-                                >
-                            </li>
-                            <li>
-                                <span>Posted on {{ profile_activity.created }}</span>
-                            </li>
-                            <li>
-                                <span>Updated on {{ profile_activity.updated }}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </article>
-                {% endfor %}
-            {% else %}
-                <h1>No activity posts to show</h1>
-            {% endif %}
         </div>
     </div>
 </div>
