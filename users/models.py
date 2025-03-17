@@ -30,6 +30,14 @@ class Profile(models.Model):
     @property
     def official_name(self):
         return f"{self.first_name} {self.last_name}"
+    
+    @property
+    def profile_image_url(self):
+        try:
+            url = self.profile_image.url
+        except:
+            url = '/media/profiles/default.png'
+        return url
 
 
 class Stack(models.Model):

@@ -10,10 +10,11 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="details_info ">
-                    <form method="POST">
-                        <div class="text-center mb-3">
-                            <img src="{{ user_profile.profile_image.url }}" width="200" height="200" class="rounded-circle" alt="user profile picture">
-                            <input type="file" class="text-light" name="image_upload" accept="image/*">
+                    <form method="POST" enctype='multipart/form-data'>
+                        {% csrf_token %}
+                        <div class="text-center text-light mb-3">
+                            <img src="{{ user_profile.profile_image_url }}" width="200" height="200" class="rounded-circle" alt="user profile picture">
+                            {{ form.profile_image }}
                         </div>
                         <div class="row">
                             <span class="wow fadeInDown col-md-6" data-wow-duration="1s" data-wow-delay=".3s">{{ form.first_name}}</span>
@@ -57,6 +58,58 @@
                             </div>
 
                         </div>
+
+                        <div class="portfolio_details_wrap mt-5">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-12">
+                                        {% comment %} <div class="banner wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
+                                            <img src="{% static 'images/img/portfolio_details/details_banner.png' %}" alt="">
+                                        </div> {% endcomment %}
+                                        <div class="details_text">
+                                            <div class="row">
+                                                <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                                                    <div class="card border-success bg-transparent" style="width: 22rem;">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title text-light">Stack</h5>
+                                                            <div class="js-stack-container">
+                                                                <p>All Stacks:</p>
+                                                                {% if stacks %}
+                                                                    {% for stack in stacks %}
+                                                                    <span class="card-text js-stacks badge badge-info mb-3 mr-2 p-2">{{ stack }}</span>
+                                                                    {% endfor %}
+                                                                {% else %}
+                                                                <p>no stacks to show</p>
+                                                                {% endif %}
+                                                                <p>Your Stack:</p>
+                                                                {% if user_profile.stack.all %}
+                                                                    {% for stack in user_profile.stack.all %}
+                                                                    <span class="card-text js-stack js-stack-{{stack.id}} badge badge-info mb-3 mr-2 p-2" data-stack-id="{{stack.id}}">{{ stack }}</span>
+                                                                    {% endfor %}
+                                                                {% else %}
+                                                                <p>None</p>
+                                                                {% endif %}
+                                                            </div>  
+                                                            <select name="select-stack" class="js-choice" id="" multiple></select>
+                                                            <!-- <input type="text" class="form-control js-stack js-choice"> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                                                    <div class="card float-right border-success bg-transparent" style="width: 22rem;">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title text-light">Currently Learning</h5>
+                                                            <p class="card-text">{{ form.currently_learning }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-success d-block mx-auto">Update Profile</button>
                     </form>
                 </div>
             </div>
@@ -65,53 +118,14 @@
 </div>
 <!-- portfolio_details_banner_end  -->
 
-<div class="portfolio_details_wrap">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                {% comment %} <div class="banner wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
-                    <img src="{% static 'images/img/portfolio_details/details_banner.png' %}" alt="">
-                </div> {% endcomment %}
-                <div class="details_text">
-                    <div class="row">
-                        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                            <div class="card border-success bg-transparent" style="width: 22rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-light">Stack</h5>
-                                    <div class="js-stack-container">
-                                        {% if stacks %}
-                                        <p>All Stacks:</p>
-                                            {% for stack in stacks %}
-                                            <span class="card-text js-stacks badge badge-info mb-3 mr-2 p-2">{{ stack }}</span>
-                                            {% endfor %}
-                                        {% endif %}
-                                        {% if user_profile.stack.all %}
-                                        <p>Your Stack:</p>
-                                            {% for stack in user_profile.stack.all %}
-                                            <span class="card-text js-stack js-stack-{{stack.id}} badge badge-info mb-3 mr-2 p-2" data-stack-id="{{stack.id}}">{{ stack }}</span>
-                                            {% endfor %}
-                                        {% else %}
-                                        <p class="card-text">None</p>
-                                        {% endif %}
-                                    </div>  
-                                    <select name="select-stack" class="js-choice" id="" multiple></select>
-                                    <!-- <input type="text" class="form-control js-stack js-choice"> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                            <div class="card float-right border-success bg-transparent" style="width: 22rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-light">Currently Learning</h5>
-                                    <p class="card-text">{{ form.currently_learning }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+    document.querySelector('#id_profile_image').classList.add('mt-3');
+    document.querySelectorAll('a').forEach((element)=> {
+        if (element.href === document.querySelector('div > img').src) {
+            element.classList.add('bg-light', 'p-2', 'rounded', 'mx-2');
+        }
+    });
+    
+</script>
 
 {% endblock %}

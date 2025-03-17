@@ -15,7 +15,7 @@
 <!-- /bradcam_area  -->
 
 <!--================Blog Area =================-->
-<section class="blog_area section-padding">
+<section class="blog_area section-padding" style="background-color: #1F1F1F">
     <h1 class="text-center mb-5">Able devs, What did we do today?</h1>
     <div class="col-md-6 offset-3 mb-5">
         <form method="POST" action="">
@@ -35,10 +35,10 @@
                 <div class="blog_left_sidebar">
                     {% if activities %}
                     {% for activity in activities %}
-                    <article class="blog_item">
+                    <article class="blog_item rounded bg-light">
                         <div class="blog_details">
                             <a href="{% url 'profile' activity.profile.id %}">
-                                <img src="{{ activity.profile.profile_image.url}}" width="20" height="20" alt="">  
+                                <img src="{{ activity.profile.profile_image.url}}" class="rounded" width="30" height="30" alt="">  
                                 {% if activity.profile.dev_name %}
                                     @{{ activity.profile.dev_name }}
                                 {% else %}
@@ -57,8 +57,7 @@
                                 <li>
                                     <a href="#"
                                         ><i class="fa fa-comments"></i> 03
-                                        Comments</a
-                                    >
+                                        Comments</a>
                                 </li>
                                 <li>
                                     <span>Posted on {{ activity.created }}</span>

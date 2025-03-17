@@ -15,6 +15,8 @@ const choices = new Choices(element, {
     addChoices: true,
     removeItemButton: true,
     duplicateItemsAllowed: false,
+    placeholderValue: 'to add your stack, type here...',
+    renderChoiceLimit: 4,
 });
  
 let dropStack = [];
