@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} 
+
+{% load static %} 
+
+{% block content %}
 
 <!-- bradcam_area  -->
 <div class="bradcam_area breadcam_bg_3">
@@ -15,7 +19,7 @@
 <!-- /bradcam_area  -->
 
 <!--================Blog Area =================-->
-<section class="blog_area section-padding" style="background-color: #1F1F1F">
+<section class="blog_area section-padding" style="background-color: #739484">
     <h1 class="text-center mb-5">Able devs, What did we do today?</h1>
     <div class="col-md-6 offset-3 mb-5">
         <form method="POST" action="">
@@ -54,9 +58,8 @@
                                 {{ activity.activity_post }}
                             </p>
                             <ul class="blog-info-link">
-                                <li>
-                                    <a href="#"
-                                        ><i class="fa fa-comments"></i> 03
+                                <li style="cursor: pointer;">
+                                    <a data-toggle="modal" data-target="#exampleModalLong"><i class="fa fa-comments"></i> 03
                                         Comments</a>
                                 </li>
                                 <li>
